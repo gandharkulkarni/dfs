@@ -1,0 +1,19 @@
+syntax = "proto3";
+option go_package = "./client_handler";
+
+message clientMsg{
+    bytes data = 1;
+    string filename = 2;
+    string action = 3;
+    string checksum = 4;
+    string status = 5;
+    int64 filesize = 6;
+    int64 chunksize = 7;
+    map<string, string> chunkDetails = 8;
+    map<string, replicaNodes> replicaDetails = 9;
+    message replicaNodes{
+        repeated string replicaList = 1;
+    }
+    repeated string fileList = 10;
+    map<string, string> diskSpaceMap = 11;
+}
